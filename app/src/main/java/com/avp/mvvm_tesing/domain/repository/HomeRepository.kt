@@ -1,4 +1,4 @@
-package com.avp.mvvm_tesing.data.repository.home
+package com.avp.mvvm_tesing.domain.repository
 
 import com.avp.mvvm_tesing.data.api.response.home.recommend.HomeRecommendResponse
 import com.avp.mvvm_tesing.data.api.response.home.searchtrend.HomeSearchTrendResponse
