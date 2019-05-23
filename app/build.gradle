@@ -33,6 +33,11 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.22.1'
     kapt  'com.google.dagger:dagger-compiler:2.22.1'
 
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
     //Testing
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.hamcrest:hamcrest-library:1.3'
