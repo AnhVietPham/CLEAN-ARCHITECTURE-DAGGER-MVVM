@@ -8,5 +8,5 @@ import io.reactivex.Single
 interface HomeRepository {
     fun getHomeTopNewsFeed(): Single<HomeTopNewFeedResponse>
     fun getHomeSearchTrend(): Single<HomeSearchTrendResponse>
-    fun getHomeRecommend(): Single<HomeRecommendResponse>
+    fun getHomeRecommend(): Single<List<HomeRecommendResponse>>
 }

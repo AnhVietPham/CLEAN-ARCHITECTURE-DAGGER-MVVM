@@ -2,8 +2,12 @@ package com.avp.mvvm_tesing.di.module
 
 import com.avp.mvvm_tesing.App
 import com.avp.mvvm_tesing.data.api.remote.RemoteHomeApiService
+import com.avp.mvvm_tesing.domain.usecase.base.UseCaseExecution
 import dagger.Module
 import dagger.Provides
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -44,7 +48,7 @@ class AppModule(private val app: App) {
     fun provideRestApi(okHttpClient: OkHttpClient): Retrofit {
         val retrofitBuilder = Retrofit.Builder()
         retrofitBuilder.client(okHttpClient)
-            .baseUrl("http://mapi-pilot.sendo.vn/")
+            .baseUrl("https://mapi.sendo.vn/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
@@ -55,5 +59,14 @@ class AppModule(private val app: App) {
     @Singleton
     fun provideRemoteHomeApiService(retrofit: Retrofit): RemoteHomeApiService {
         return retrofit.create(RemoteHomeApiService::class.java)
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideUseCaseExecution(): UseCaseExecution {
+        val execution = Schedulers.io()
+        val postExecution = AndroidSchedulers.mainThread()
+        return UseCaseExecution(execution = execution, postExecution = postExecution)
     }
 }

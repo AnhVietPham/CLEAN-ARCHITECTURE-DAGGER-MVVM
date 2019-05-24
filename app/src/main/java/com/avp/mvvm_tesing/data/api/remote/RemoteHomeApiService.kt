@@ -14,6 +14,6 @@ interface RemoteHomeApiService {
     fun getHomeSearchTrend(): Single<HomeSearchTrendResponse>
 
     @GET("mob/home/recommend")
-    fun getHomeRecommend(): Single<HomeRecommendResponse>
+    fun getHomeRecommend(): Single<List<HomeRecommendResponse>>
 
 }

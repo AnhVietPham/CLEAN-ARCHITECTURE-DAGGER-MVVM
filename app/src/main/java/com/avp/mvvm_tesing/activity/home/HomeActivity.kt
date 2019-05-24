@@ -24,9 +24,4 @@ class HomeActivity : BaseActivity() {
         homeActivityBinding.viewModel = homeViewModel
         homeViewModel.bound()
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        homeViewModel.unbound()
-    }
 }

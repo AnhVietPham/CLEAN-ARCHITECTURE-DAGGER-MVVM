@@ -18,7 +18,7 @@ class HomeRepositoryImpl(private val remoteHomeApiService: RemoteHomeApiService)
         return remoteHomeApiService.getHomeSearchTrend()
     }
 
-    override fun getHomeRecommend(): Single<HomeRecommendResponse> {
+    override fun getHomeRecommend(): Single<List<HomeRecommendResponse>> {
         return remoteHomeApiService.getHomeRecommend()
     }
 
