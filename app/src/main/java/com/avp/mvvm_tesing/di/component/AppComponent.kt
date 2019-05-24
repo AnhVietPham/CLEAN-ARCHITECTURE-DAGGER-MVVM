@@ -1,13 +1,16 @@
 package com.avp.mvvm_tesing.di.component
 
-import com.avp.mvvm_tesing.data.api.ApiModule
+import com.avp.mvvm_tesing.App
 import com.avp.mvvm_tesing.di.module.AppModule
-import com.avp.mvvm_tesing.domain.repository.HomeRepository
+import com.avp.mvvm_tesing.di.module.RepositoryModule
+import com.avp.mvvm_tesing.di.screen.ScreenComponent
+import com.avp.mvvm_tesing.di.screen.ScreenModule
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AppModule::class, ApiModule::class])
+@Component(modules = [AppModule::class, RepositoryModule::class])
 interface AppComponent {
-    fun exposeHomeRepository(): HomeRepository
+    fun inject(activity: App)
+    fun plus(screen: ScreenModule): ScreenComponent
 }

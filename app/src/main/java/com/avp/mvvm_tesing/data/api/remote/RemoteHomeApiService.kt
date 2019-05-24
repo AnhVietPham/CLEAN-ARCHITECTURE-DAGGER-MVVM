@@ -7,13 +7,13 @@ import io.reactivex.Single
 import retrofit2.http.GET
 
 interface RemoteHomeApiService {
-    @GET("/mod/home/top-newsfeed")
+    @GET("mob/home/top-newsfeed")
     fun getHomeTopNewsFeed(): Single<HomeTopNewFeedResponse>
 
-    @GET("/mod/home/search-trend")
+    @GET("mob/home/search-trend")
     fun getHomeSearchTrend(): Single<HomeSearchTrendResponse>
 
-    @GET("/mod/home/recommend")
+    @GET("mob/home/recommend")
     fun getHomeRecommend(): Single<HomeRecommendResponse>
 
 }

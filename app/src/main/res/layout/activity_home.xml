@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="viewModel" type="com.avp.mvvm_tesing.viewmodel.HomeViewModel"/>
+        <variable name="viewModel"
+                  type="com.avp.mvvm_tesing.viewmodel.HomeViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
