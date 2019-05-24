@@ -20,12 +20,13 @@ class HomeActivity : BaseActivity() {
             this,
             R.layout.activity_home
         )
-
         sreenComponent.inject(this)
         homeActivityBinding.viewModel = homeViewModel
-        homeViewModel.loadHomeTopNewsFeed()
-        homeViewModel.loadHomeSearchTrend()
-        homeViewModel.loadHomeRecommend()
+        homeViewModel.bound()
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        homeViewModel.unbound()
     }
 }
