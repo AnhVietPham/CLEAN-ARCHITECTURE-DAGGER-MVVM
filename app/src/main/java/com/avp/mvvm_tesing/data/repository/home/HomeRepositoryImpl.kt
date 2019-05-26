@@ -2,24 +2,38 @@ package com.avp.mvvm_tesing.data.repository.home
 
 
 import com.avp.mvvm_tesing.data.api.remote.RemoteHomeApiService
-import com.avp.mvvm_tesing.data.api.response.home.recommend.HomeRecommendResponse
-import com.avp.mvvm_tesing.data.api.response.home.searchtrend.HomeSearchTrendResponse
-import com.avp.mvvm_tesing.data.api.response.home.topnewfeed.HomeTopNewFeedResponse
+import com.avp.mvvm_tesing.data.repository.home.mapper.HomeRecommendMapper
+import com.avp.mvvm_tesing.data.repository.home.mapper.HomeSearchTrendMapper
+import com.avp.mvvm_tesing.data.repository.home.mapper.HomeTopNewFeedMapper
 import com.avp.mvvm_tesing.domain.repository.HomeRepository
+import com.avp.mvvm_tesing.domain.usecase.features.home.recommend.HomeRecommendResultModel
+import com.avp.mvvm_tesing.domain.usecase.features.home.searchtrend.HomeSearchTrendResultModel
+import com.avp.mvvm_tesing.domain.usecase.features.home.topnewsfeed.HomeTopNewsResultModel
 import io.reactivex.Single
 
-class HomeRepositoryImpl(private val remoteHomeApiService: RemoteHomeApiService) : HomeRepository {
+class HomeRepositoryImpl(
+    private val remoteHomeApiService: RemoteHomeApiService,
+    private val homeRecommendMapper: HomeRecommendMapper,
+    private val homeTopNewFeedMapper: HomeTopNewFeedMapper,
+    private val homeSearchTrendMapper: HomeSearchTrendMapper
+) : HomeRepository {
 
-    override fun getHomeTopNewsFeed(): Single<HomeTopNewFeedResponse> {
-        return remoteHomeApiService.getHomeTopNewsFeed()
+    override fun getHomeTopNewsFeed(): Single<HomeTopNewsResultModel> {
+        return remoteHomeApiService.getHomeTopNewsFeed().map { homeTopNewsFeedResponse ->
+            homeTopNewFeedMapper.map(input = homeTopNewsFeedResponse)
+        }
     }
 
-    override fun getHomeSearchTrend(): Single<HomeSearchTrendResponse> {
-        return remoteHomeApiService.getHomeSearchTrend()
+    override fun getHomeSearchTrend(): Single<HomeSearchTrendResultModel> {
+        return remoteHomeApiService.getHomeSearchTrend().map { homeSearchTrendResponse ->
+            homeSearchTrendMapper.map(input = homeSearchTrendResponse)
+        }
     }
 
-    override fun getHomeRecommend(): Single<List<HomeRecommendResponse>> {
-        return remoteHomeApiService.getHomeRecommend()
+    override fun getHomeRecommend(): Single<List<HomeRecommendResultModel>> {
+        return remoteHomeApiService.getHomeRecommend().map { homeRecommendResponse ->
+            homeRecommendMapper.mapList(inputs =     homeRecommendResponse)
+        }
     }
 
 }

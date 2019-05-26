@@ -1,12 +1,12 @@
 package com.avp.mvvm_tesing.domain.repository
 
-import com.avp.mvvm_tesing.data.api.response.home.recommend.HomeRecommendResponse
-import com.avp.mvvm_tesing.data.api.response.home.searchtrend.HomeSearchTrendResponse
-import com.avp.mvvm_tesing.data.api.response.home.topnewfeed.HomeTopNewFeedResponse
+import com.avp.mvvm_tesing.domain.usecase.features.home.recommend.HomeRecommendResultModel
+import com.avp.mvvm_tesing.domain.usecase.features.home.searchtrend.HomeSearchTrendResultModel
+import com.avp.mvvm_tesing.domain.usecase.features.home.topnewsfeed.HomeTopNewsResultModel
 import io.reactivex.Single
 
 interface HomeRepository {
-    fun getHomeTopNewsFeed(): Single<HomeTopNewFeedResponse>
-    fun getHomeSearchTrend(): Single<HomeSearchTrendResponse>
-    fun getHomeRecommend(): Single<List<HomeRecommendResponse>>
+    fun getHomeTopNewsFeed(): Single<HomeTopNewsResultModel>
+    fun getHomeSearchTrend(): Single<HomeSearchTrendResultModel>
+    fun getHomeRecommend(): Single<List<HomeRecommendResultModel>>
 }
