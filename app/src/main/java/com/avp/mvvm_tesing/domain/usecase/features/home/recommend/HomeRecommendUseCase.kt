@@ -4,6 +4,7 @@ import com.avp.mvvm_tesing.data.api.response.home.recommend.HomeRecommendRespons
 import com.avp.mvvm_tesing.domain.repository.HomeRepository
 import com.avp.mvvm_tesing.domain.usecase.base.UseCaseExecution
 import com.avp.mvvm_tesing.domain.usecase.base.UseCaseOutput
+import com.avp.mvvm_tesing.domain.usecase.features.home.recommend.failoutput.HomeRecommendFailOutput
 import io.reactivex.Single
 import javax.inject.Inject
 

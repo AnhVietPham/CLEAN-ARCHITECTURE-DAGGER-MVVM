@@ -6,9 +6,9 @@ import com.avp.mvvm_tesing.data.repository.home.mapper.HomeRecommendMapper
 import com.avp.mvvm_tesing.data.repository.home.mapper.HomeSearchTrendMapper
 import com.avp.mvvm_tesing.data.repository.home.mapper.HomeTopNewFeedMapper
 import com.avp.mvvm_tesing.domain.repository.HomeRepository
-import com.avp.mvvm_tesing.domain.usecase.features.home.recommend.HomeRecommendResultModel
-import com.avp.mvvm_tesing.domain.usecase.features.home.searchtrend.HomeSearchTrendResultModel
-import com.avp.mvvm_tesing.domain.usecase.features.home.topnewsfeed.HomeTopNewsResultModel
+import com.avp.mvvm_tesing.domain.usecase.features.home.recommend.result.HomeRecommendResultModel
+import com.avp.mvvm_tesing.domain.usecase.features.home.searchtrend.result.HomeSearchTrendResultModel
+import com.avp.mvvm_tesing.domain.usecase.features.home.topnewsfeed.result.HomeTopNewsResultModel
 import io.reactivex.Single
 
 class HomeRepositoryImpl(

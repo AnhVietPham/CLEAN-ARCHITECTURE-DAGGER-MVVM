@@ -4,6 +4,7 @@ import com.avp.mvvm_tesing.data.api.response.home.topnewfeed.HomeTopNewFeedRespo
 import com.avp.mvvm_tesing.domain.repository.HomeRepository
 import com.avp.mvvm_tesing.domain.usecase.base.UseCaseExecution
 import com.avp.mvvm_tesing.domain.usecase.base.UseCaseOutput
+import com.avp.mvvm_tesing.domain.usecase.features.home.topnewsfeed.failoutput.HomeTopNewsFeedFailOutput
 import io.reactivex.Single
 import javax.inject.Inject
 
