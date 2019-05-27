@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="viewModel"
+        <import type="android.view.View"/>
+        <variable name="homeViewModel"
                   type="com.avp.mvvm_tesing.viewmodel.HomeViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
@@ -20,10 +21,10 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <ProgressBar
-                android:id="@+id/progressBar1"
+                android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.progressVisible}"
+                android:visibility="@{homeViewModel.progressVisible ? View.VISIBLE : View.GONE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

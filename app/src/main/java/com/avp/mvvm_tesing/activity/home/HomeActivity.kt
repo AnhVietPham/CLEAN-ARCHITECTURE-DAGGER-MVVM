@@ -21,7 +21,7 @@ class HomeActivity : BaseActivity() {
             R.layout.activity_home
         )
         sreenComponent.inject(this)
-        homeActivityBinding.viewModel = homeViewModel
+        homeActivityBinding.homeViewModel = homeViewModel
         homeViewModel.bound()
     }
 }

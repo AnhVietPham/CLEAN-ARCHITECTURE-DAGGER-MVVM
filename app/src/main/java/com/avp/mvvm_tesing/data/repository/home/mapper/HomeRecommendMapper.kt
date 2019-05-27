@@ -3,8 +3,9 @@ package com.avp.mvvm_tesing.data.repository.home.mapper
 import com.avp.mvvm_tesing.data.api.response.home.recommend.HomeRecommendResponse
 import com.avp.mvvm_tesing.domain.usecase.features.home.recommend.result.HomeRecommendResultModel
 import com.avp.mvvm_tesing.utils.mapper.Mapper
+import javax.inject.Inject
 
-class HomeRecommendMapper : Mapper<HomeRecommendResponse, HomeRecommendResultModel>() {
+class HomeRecommendMapper @Inject constructor() : Mapper<HomeRecommendResponse, HomeRecommendResultModel>() {
     override fun map(input: HomeRecommendResponse): HomeRecommendResultModel {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

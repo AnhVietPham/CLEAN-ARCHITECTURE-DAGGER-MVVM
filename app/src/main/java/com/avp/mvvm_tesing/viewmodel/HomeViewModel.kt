@@ -1,16 +1,19 @@
 package com.avp.mvvm_tesing.viewmodel
 
+import android.databinding.ObservableArrayList
 import android.databinding.ObservableBoolean
-import com.avp.mvvm_tesing.data.api.response.home.recommend.HomeRecommendResponse
-import com.avp.mvvm_tesing.data.api.response.home.searchtrend.HomeSearchTrendResponse
-import com.avp.mvvm_tesing.data.api.response.home.topnewfeed.HomeTopNewFeedResponse
 import com.avp.mvvm_tesing.domain.usecase.base.ResultListener
-import com.avp.mvvm_tesing.domain.usecase.features.home.recommend.failoutput.HomeRecommendFailOutput
 import com.avp.mvvm_tesing.domain.usecase.features.home.recommend.HomeRecommendUseCase
-import com.avp.mvvm_tesing.domain.usecase.features.home.searchtrend.failoutput.HomeSearchTrendFailOutput
+import com.avp.mvvm_tesing.domain.usecase.features.home.recommend.failoutput.HomeRecommendFailOutput
+import com.avp.mvvm_tesing.domain.usecase.features.home.recommend.result.HomeRecommendResultModel
 import com.avp.mvvm_tesing.domain.usecase.features.home.searchtrend.HomeSearchTrendUseCase
-import com.avp.mvvm_tesing.domain.usecase.features.home.topnewsfeed.failoutput.HomeTopNewsFeedFailOutput
+import com.avp.mvvm_tesing.domain.usecase.features.home.searchtrend.failoutput.HomeSearchTrendFailOutput
+import com.avp.mvvm_tesing.domain.usecase.features.home.searchtrend.result.HomeSearchTrendDataResultModel
+import com.avp.mvvm_tesing.domain.usecase.features.home.searchtrend.result.HomeSearchTrendResultModel
 import com.avp.mvvm_tesing.domain.usecase.features.home.topnewsfeed.HomeTopNewsFeedUseCase
+import com.avp.mvvm_tesing.domain.usecase.features.home.topnewsfeed.failoutput.HomeTopNewsFeedFailOutput
+import com.avp.mvvm_tesing.domain.usecase.features.home.topnewsfeed.result.HomeTopNewsDataResultModel
+import com.avp.mvvm_tesing.domain.usecase.features.home.topnewsfeed.result.HomeTopNewsResultModel
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
@@ -18,9 +21,9 @@ class HomeViewModel @Inject constructor(
     private val homeTopNewsFeedUseCase: HomeTopNewsFeedUseCase,
     private val homeSearchTrendUseCase: HomeSearchTrendUseCase
 ) {
-    lateinit var homeTopNewFeedResponseResult: HomeTopNewFeedResponse
-    lateinit var homeRecommendResponseResults: List<HomeRecommendResponse>
-    lateinit var homeSearchTrendResponseResult: HomeSearchTrendResponse
+    val homeTopNewFeedResult = ObservableArrayList<HomeTopNewsDataResultModel>()
+    val homeRecommendResults = ObservableArrayList<HomeRecommendResultModel>()
+    val homeSearchTrendResult = ObservableArrayList<HomeSearchTrendDataResultModel>()
     val progressVisible = ObservableBoolean()
 
     fun bound() {
@@ -30,12 +33,12 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun loadHomeRecommend() {
-        progressVisible.set(true)
+        progressVisible(isVisible = true)
         homeRecommendUseCase.executeAsync(object :
-            ResultListener<List<HomeRecommendResponse>, HomeRecommendFailOutput> {
-            override fun success(successOutput: List<HomeRecommendResponse>) {
-                progressVisible.set(false)
-                homeRecommendResponseResults = successOutput
+            ResultListener<List<HomeRecommendResultModel>, HomeRecommendFailOutput> {
+            override fun success(successOutput: List<HomeRecommendResultModel>) {
+                progressVisible(isVisible = false)
+                homeRecommendResults.addAll(successOutput)
             }
 
             override fun fail(failOutput: HomeRecommendFailOutput) {
@@ -46,11 +49,11 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun loadHomeTopNewsFeed() {
-        progressVisible.set(true)
-        homeTopNewsFeedUseCase.executeAsync(object : ResultListener<HomeTopNewFeedResponse, HomeTopNewsFeedFailOutput> {
-            override fun success(successOutput: HomeTopNewFeedResponse) {
-                progressVisible.set(false)
-                homeTopNewFeedResponseResult = successOutput
+        progressVisible(isVisible = true)
+        homeTopNewsFeedUseCase.executeAsync(object : ResultListener<HomeTopNewsResultModel, HomeTopNewsFeedFailOutput> {
+            override fun success(successOutput: HomeTopNewsResultModel) {
+                progressVisible(isVisible = false)
+                homeTopNewFeedResult.addAll(successOutput.data)
             }
 
             override fun fail(failOutput: HomeTopNewsFeedFailOutput) {
@@ -60,12 +63,12 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun loadHomeSearchTrend() {
-        progressVisible.set(true)
+        progressVisible(isVisible = true)
         homeSearchTrendUseCase.executeAsync(object :
-            ResultListener<HomeSearchTrendResponse, HomeSearchTrendFailOutput> {
-            override fun success(successOutput: HomeSearchTrendResponse) {
-                progressVisible.set(false)
-                homeSearchTrendResponseResult = successOutput
+            ResultListener<HomeSearchTrendResultModel, HomeSearchTrendFailOutput> {
+            override fun success(successOutput: HomeSearchTrendResultModel) {
+                progressVisible(isVisible = false)
+                homeSearchTrendResult.addAll(successOutput.data)
             }
 
             override fun fail(failOutput: HomeSearchTrendFailOutput) {
@@ -75,4 +78,7 @@ class HomeViewModel @Inject constructor(
         })
     }
 
+    private fun progressVisible(isVisible: Boolean) {
+        progressVisible.set(isVisible)
+    }
 }

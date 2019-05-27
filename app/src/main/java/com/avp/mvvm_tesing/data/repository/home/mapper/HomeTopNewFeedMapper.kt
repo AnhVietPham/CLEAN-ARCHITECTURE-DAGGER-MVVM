@@ -3,8 +3,9 @@ package com.avp.mvvm_tesing.data.repository.home.mapper
 import com.avp.mvvm_tesing.data.api.response.home.topnewfeed.HomeTopNewFeedResponse
 import com.avp.mvvm_tesing.domain.usecase.features.home.topnewsfeed.result.HomeTopNewsResultModel
 import com.avp.mvvm_tesing.utils.mapper.Mapper
+import javax.inject.Inject
 
-class HomeTopNewFeedMapper : Mapper<HomeTopNewFeedResponse, HomeTopNewsResultModel>() {
+class HomeTopNewFeedMapper @Inject constructor() : Mapper<HomeTopNewFeedResponse, HomeTopNewsResultModel>() {
     override fun map(input: HomeTopNewFeedResponse): HomeTopNewsResultModel {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
