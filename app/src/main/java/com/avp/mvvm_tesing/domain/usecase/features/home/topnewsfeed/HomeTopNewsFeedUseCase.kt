@@ -17,6 +17,6 @@ class HomeTopNewsFeedUseCase @Inject constructor(
     }
 
     override fun createFailOutput(throwable: Throwable): HomeTopNewsFeedFailOutput {
-        return HomeTopNewsFeedFailOutput()
+        return HomeTopNewsFeedFailOutput(throwable = throwable)
     }
 }

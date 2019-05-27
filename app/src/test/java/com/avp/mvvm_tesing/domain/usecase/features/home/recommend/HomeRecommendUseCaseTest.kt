@@ -51,6 +51,6 @@ class HomeRecommendUseCaseTest {
     fun `createFailOutput return data`() {
         val throwable = Throwable()
         val failOutput = homeRecommendUseCase.createFailOutput(throwable)
-        assertEquals(failOutput, HomeRecommendFailOutput(throwable))
+        assertEquals(HomeRecommendFailOutput(throwable), failOutput)
     }
 }

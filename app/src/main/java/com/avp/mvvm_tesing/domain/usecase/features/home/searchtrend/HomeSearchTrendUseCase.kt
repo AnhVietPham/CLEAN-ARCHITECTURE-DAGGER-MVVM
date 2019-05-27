@@ -17,6 +17,6 @@ class HomeSearchTrendUseCase @Inject constructor(
     }
 
     override fun createFailOutput(throwable: Throwable): HomeSearchTrendFailOutput {
-        return HomeSearchTrendFailOutput()
+        return HomeSearchTrendFailOutput(throwable = throwable)
     }
 }
