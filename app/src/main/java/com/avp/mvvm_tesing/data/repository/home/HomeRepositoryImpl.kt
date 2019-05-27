@@ -32,7 +32,7 @@ class HomeRepositoryImpl(
 
     override fun getHomeRecommend(): Single<List<HomeRecommendResultModel>> {
         return remoteHomeApiService.getHomeRecommend().map { homeRecommendResponse ->
-            homeRecommendMapper.mapList(inputs =     homeRecommendResponse)
+            homeRecommendMapper.mapList(inputs = homeRecommendResponse)
         }
     }
 
