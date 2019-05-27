@@ -17,6 +17,6 @@ class HomeRecommendUseCase @Inject constructor(
     }
 
     override fun createFailOutput(throwable: Throwable): HomeRecommendFailOutput {
-        return HomeRecommendFailOutput()
+        return HomeRecommendFailOutput(throwable = throwable)
     }
 }

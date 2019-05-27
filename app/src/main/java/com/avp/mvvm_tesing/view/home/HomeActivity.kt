@@ -1,9 +1,9 @@
-package com.avp.mvvm_tesing.activity.home
+package com.avp.mvvm_tesing.view.home
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import com.avp.mvvm_tesing.R
-import com.avp.mvvm_tesing.activity.BaseActivity
+import com.avp.mvvm_tesing.view.BaseActivity
 import com.avp.mvvm_tesing.databinding.ActivityHomeBinding
 import com.avp.mvvm_tesing.viewmodel.HomeViewModel
 import javax.inject.Inject

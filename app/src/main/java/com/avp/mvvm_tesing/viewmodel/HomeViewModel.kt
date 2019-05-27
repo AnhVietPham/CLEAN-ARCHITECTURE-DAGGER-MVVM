@@ -27,13 +27,13 @@ class HomeViewModel @Inject constructor(
     val progressVisible = ObservableBoolean()
 
     fun bound() {
+        progressVisible(isVisible = true)
         loadHomeRecommend()
         loadHomeSearchTrend()
         loadHomeTopNewsFeed()
     }
 
     private fun loadHomeRecommend() {
-        progressVisible(isVisible = true)
         homeRecommendUseCase.executeAsync(object :
             ResultListener<List<HomeRecommendResultModel>, HomeRecommendFailOutput> {
             override fun success(successOutput: List<HomeRecommendResultModel>) {
@@ -49,7 +49,6 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun loadHomeTopNewsFeed() {
-        progressVisible(isVisible = true)
         homeTopNewsFeedUseCase.executeAsync(object : ResultListener<HomeTopNewsResultModel, HomeTopNewsFeedFailOutput> {
             override fun success(successOutput: HomeTopNewsResultModel) {
                 progressVisible(isVisible = false)
@@ -63,7 +62,6 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun loadHomeSearchTrend() {
-        progressVisible(isVisible = true)
         homeSearchTrendUseCase.executeAsync(object :
             ResultListener<HomeSearchTrendResultModel, HomeSearchTrendFailOutput> {
             override fun success(successOutput: HomeSearchTrendResultModel) {

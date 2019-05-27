@@ -1,4 +1,4 @@
-package com.avp.mvvm_tesing.activity
+package com.avp.mvvm_tesing.view
 
 import android.support.v7.app.AppCompatActivity
 import com.avp.mvvm_tesing.App
