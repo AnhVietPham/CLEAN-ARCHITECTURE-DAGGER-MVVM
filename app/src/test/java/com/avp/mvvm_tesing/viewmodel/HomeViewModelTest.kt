@@ -35,49 +35,67 @@ class HomeViewModelTest {
 
     @Test
     fun `loadHomeRecommend_01 homeRecommendUseCaseExecuteAsync success`() {
+        //Arrange
         val homeRecommendResultModels = listOf<HomeRecommendResultModel>()
         val argumentCaptor = argumentCaptor<ResultListener<List<HomeRecommendResultModel>, HomeRecommendFailOutput>>()
+        //Act
         verify(homeRecommendUseCase).executeAsync(argumentCaptor.capture())
+        //Assert
         argumentCaptor.firstValue.success(homeRecommendResultModels)
     }
 
     @Test
     fun `loadHomeRecommend_02 homeRecommendUseCaseExecuteAsync failure`() {
+        //Arrange
         val homeRecommendFailOutput: HomeRecommendFailOutput = mock()
         val argumentCaptor = argumentCaptor<ResultListener<List<HomeRecommendResultModel>, HomeRecommendFailOutput>>()
+        //Act
         verify(homeRecommendUseCase).executeAsync(argumentCaptor.capture())
+        //Assert
         argumentCaptor.firstValue.fail(homeRecommendFailOutput)
     }
 
     @Test
     fun `loadHomeTopNewsFeed_01 homeTopNewsFeedUseCaseExecuteAsync success`() {
+        //Arrange
         val homeTopNewsResultModel: HomeTopNewsResultModel = mock()
         val argumentCaptor = argumentCaptor<ResultListener<HomeTopNewsResultModel, HomeTopNewsFeedFailOutput>>()
+        //Act
         verify(homeTopNewsFeedUseCase).executeAsync(argumentCaptor.capture())
+        //Assert
         argumentCaptor.firstValue.success(homeTopNewsResultModel)
     }
 
     @Test
     fun `loadHomeTopNewsFeed_02 homeTopNewsFeedUseCaseExecuteAsync failure`() {
+        //Arrange
         val homeTopNewsFeedFailOutput: HomeTopNewsFeedFailOutput = mock()
         val argumentCaptor = argumentCaptor<ResultListener<HomeTopNewsResultModel, HomeTopNewsFeedFailOutput>>()
+        //Act
         verify(homeTopNewsFeedUseCase).executeAsync(argumentCaptor.capture())
+        //Assert
         argumentCaptor.firstValue.fail(homeTopNewsFeedFailOutput)
     }
 
     @Test
     fun `loadHomeSearchTrend_01 homeSearchTrendUseCaseExecuteAsync success`() {
+        //Arrange
         val homeSearchTrendResultModel: HomeSearchTrendResultModel = mock()
         val argumentCaptor = argumentCaptor<ResultListener<HomeSearchTrendResultModel, HomeSearchTrendFailOutput>>()
+        //Act
         verify(homeSearchTrendUseCase).executeAsync(argumentCaptor.capture())
+        //Assert
         argumentCaptor.firstValue.success(homeSearchTrendResultModel)
     }
 
     @Test
     fun `loadHomeSearchTrend_02 homeSearchTrendUseCaseExecuteAsync failure`() {
+        //Arrange
         val homeSearchTrendFailOutput: HomeSearchTrendFailOutput = mock()
         val argumentCaptor = argumentCaptor<ResultListener<HomeSearchTrendResultModel, HomeSearchTrendFailOutput>>()
+        //Act
         verify(homeSearchTrendUseCase).executeAsync(argumentCaptor.capture())
+        //Assert
         argumentCaptor.firstValue.fail(homeSearchTrendFailOutput)
     }
 }
