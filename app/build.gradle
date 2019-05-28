@@ -7,14 +7,16 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    def projectConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion projectConfiguration["androidCompileSdkVersion"]
+    buildToolsVersion projectConfiguration["androidBuildToolsVersion"]
     defaultConfig {
-        applicationId "com.avp.mvvm_tesing"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        applicationId projectConfiguration["androidApplicationId"]
+        minSdkVersion projectConfiguration["androidMinSdkVersion"]
+        targetSdkVersion projectConfiguration["androidTargetSdkVersion"]
+        versionCode projectConfiguration["androidVersionCode"]
+        versionName projectConfiguration["androidVersionName"]
+        testInstrumentationRunner projectConfiguration["testInstrumentationRunner"]
     }
     buildTypes {
         release {
