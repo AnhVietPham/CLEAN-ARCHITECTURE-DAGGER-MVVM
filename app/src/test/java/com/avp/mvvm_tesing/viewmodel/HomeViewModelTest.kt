@@ -68,13 +68,13 @@ class HomeViewModelTest {
 
     @Test
     fun `loadHomeTopNewsFeed_02 homeTopNewsFeedUseCaseExecuteAsync failure`() {
-//        //Arrange
-//        val homeTopNewsFeedFailOutput: HomeTopNewsFeedFailOutput = mock()
-//        val argumentCaptor = argumentCaptor<ResultListener<HomeTopNewsResultModel, HomeTopNewsFeedFailOutput>>()
-//        //Act
-//        verify(homeTopNewsFeedUseCase).executeAsync(argumentCaptor.capture())
-//        //Assert
-//        argumentCaptor.firstValue.fail(homeTopNewsFeedFailOutput)
+        //Arrange
+        val homeTopNewsFeedFailOutput: HomeTopNewsFeedFailOutput = mock()
+        val argumentCaptor = argumentCaptor<ResultListener<HomeTopNewsResultModel, HomeTopNewsFeedFailOutput>>()
+        //Act
+        verify(homeTopNewsFeedUseCase).executeAsync(argumentCaptor.capture())
+        //Assert
+        argumentCaptor.firstValue.fail(homeTopNewsFeedFailOutput)
     }
 
     @Test
