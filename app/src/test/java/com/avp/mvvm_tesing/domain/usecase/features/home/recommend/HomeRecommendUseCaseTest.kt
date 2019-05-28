@@ -27,30 +27,42 @@ class HomeRecommendUseCaseTest {
 
     @Test
     fun `buildUseCaseObservable call Repository`() {
+        //Arrange
+        //Act
         homeRecommendUseCase.buildUseCaseObservable()
+        //Assert
         verify(mockHomeRepository).getHomeRecommend()
     }
 
     @Test
     fun `buildUseCaseObservable complete`() {
+        //Arrange
         val homeRecommendResultModels = mutableListOf<HomeRecommendResultModel>()
         whenever(mockHomeRepository.getHomeRecommend()).thenReturn(Single.just(homeRecommendResultModels))
+        //Act
         val testObserver = homeRecommendUseCase.buildUseCaseObservable().test()
+        //Assert
         testObserver.assertComplete()
     }
 
     @Test
     fun `buildUseCaseObservable return data`() {
+        //Arrange
         val homeRecommendResultModels = mutableListOf<HomeRecommendResultModel>()
         whenever(mockHomeRepository.getHomeRecommend()).thenReturn(Single.just(homeRecommendResultModels))
+        //Act
         val testObserver = homeRecommendUseCase.buildUseCaseObservable().test()
+        //Assert
         testObserver.assertValue(homeRecommendResultModels)
     }
 
     @Test
     fun `createFailOutput return data`() {
+        //Arrange
         val throwable = Throwable()
+        //Act
         val failOutput = homeRecommendUseCase.createFailOutput(throwable)
+        //Assert
         assertEquals(HomeRecommendFailOutput(throwable), failOutput)
     }
 }

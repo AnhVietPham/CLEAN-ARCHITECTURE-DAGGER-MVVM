@@ -27,30 +27,42 @@ class HomeTopNewsFeedUseCaseTest{
 
     @Test
     fun `buildUseCaseObservable call Repository`() {
+        //Arrange
+        //Act
         homeTopNewsFeedUseCase.buildUseCaseObservable()
+        //Assert
         verify(mockHomeRepository).getHomeTopNewsFeed()
     }
 
     @Test
     fun `buildUseCaseObservable complete`() {
+        //Arrange
         val homeTopNewsResultModel : HomeTopNewsResultModel = mock()
         whenever(mockHomeRepository.getHomeTopNewsFeed()).thenReturn(Single.just(homeTopNewsResultModel))
+        //Act
         val testObserver = homeTopNewsFeedUseCase.buildUseCaseObservable().test()
+        //Assert
         testObserver.assertComplete()
     }
 
     @Test
     fun `buildUseCaseObservable return data`() {
+        //Arrange
         val homeTopNewsResultModel : HomeTopNewsResultModel = mock()
         whenever(mockHomeRepository.getHomeTopNewsFeed()).thenReturn(Single.just(homeTopNewsResultModel))
+        //Act
         val testObserver = homeTopNewsFeedUseCase.buildUseCaseObservable().test()
+        //Assert
         testObserver.assertValue(homeTopNewsResultModel)
     }
 
     @Test
     fun `createFailOutput return data`() {
+        //Arrange
         val throwable = Throwable()
+        //Act
         val failOutput = homeTopNewsFeedUseCase.createFailOutput(throwable)
+        //Assert
         assertEquals(HomeTopNewsFeedFailOutput(throwable = throwable), failOutput)
     }
 }
